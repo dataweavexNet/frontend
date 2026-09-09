@@ -1,0 +1,8 @@
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { IMG } from '../data/constants';
+import Reveal from './Reveal';
+
+export default function Transformation() {
+  const steps = ['Raw data', 'Validate', 'Normalize', 'Enrich', 'Transform', 'AI ready'];
+  return <section className="section-pad transform-section"><div className="transform-img" style={{ backgroundImage: `url(${IMG.transform})` }} /><div className="split-layout"><Reveal><span className="eyebrow">02 / TRANSFORMATION ENGINE</span><h2>Turn raw data<br /><span>into something useful.</span></h2><p>Move from fragmented inputs to trusted, structured data with workflows your teams can see and improve.</p><a href="#contact" className="text-link">Talk to the team <ArrowUpRight size={15} /></a></Reveal><Reveal delay={0.1}><div className="pipeline-card"><div className="pipeline-top"><span className="eyebrow">TRANSFORMATION PIPELINE</span><span className="pill running"><i /> Running</span></div><div className="pipeline-steps">{steps.map((step, index) => <div key={step} className={index === steps.length - 1 ? 'pipeline-step active' : 'pipeline-step'}><span>{String(index + 1).padStart(2, '0')}</span><strong>{step}</strong>{index < steps.length - 1 && <ArrowDownRight size={15} />}</div>)}</div><div className="progress-row"><span>Schema normalization</span><b>92%</b><div><i style={{ width: '92%' }} /></div></div><div className="progress-row"><span>Data quality</span><b>96%</b><div><i style={{ width: '96%' }} /></div></div><div className="pipeline-foot"><span><i className="status-dot" /> Pipeline status</span><strong>2,483,921 <small>records processed</small></strong></div></div></Reveal></div></section>;
+}

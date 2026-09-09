@@ -1,0 +1,10 @@
+import { useState } from 'react';
+import { ArrowRight, Check } from 'lucide-react';
+import Reveal from './Reveal';
+import PayPalModal, { type Plan } from './PayPalModal';
+
+export default function Pricing() {
+  const [checkout, setCheckout] = useState<Plan | null>(null);
+  const tiers: { name: string; desc: string; price: number; items: string[] }[] = [{ name: 'PLATFORM', desc: 'For teams building modern data workflows.', price: 49, items: ['Connect common enterprise sources', 'Build and monitor transformations', 'Prepare datasets for analytics and AI'] }, { name: 'ENTERPRISE', desc: 'For large-scale enterprise environments.', price: 249, items: ['Advanced orchestration and governance', 'Hybrid and multi-cloud architecture', 'Priority support and enablement'] }, { name: 'PRIVATE DEPLOYMENT', desc: 'For controlled enterprise environments.', price: 0, items: ['Dedicated deployment architecture', 'Security and compliance alignment', 'Custom operating model'] }];
+  return <section className="section-pad pricing-section" id="pricing"><Reveal><span className="eyebrow">08 / ENGAGEMENT MODELS</span><div className="section-heading"><h2>Built around<br /><span>your data reality.</span></h2><p>No arbitrary packages. Choose the operating model that fits your environment and where you want to go next.</p></div></Reveal><div className="pricing-grid">{tiers.map(({ name, desc, price, items }, index) => <Reveal key={name} delay={index * 0.08}><div className={`price-card ${index === 1 ? 'featured-price' : ''}`}>{index === 1 && <span className="recommended">MOST FLEXIBLE</span>}<span className="eyebrow">{name}</span><h3>{desc}</h3>{price > 0 && <strong className="price-tag">${price}<small>USD</small></strong>}<ul>{items.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul>{price > 0 ? <button className="text-link" type="button" onClick={() => setCheckout({ name, price })}>Buy now <ArrowRight size={15} /></button> : <a href="#contact" className="text-link">Discuss deployment <ArrowRight size={15} /></a>}</div></Reveal>)}</div>{checkout && <PayPalModal plan={checkout} onClose={() => setCheckout(null)} />}</section>;
+}
