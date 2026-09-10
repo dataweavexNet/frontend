@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Youtube, Linkedin } from 'lucide-react';
+import { Youtube, Linkedin, Facebook } from 'lucide-react';
 import Mark from './Mark';
 
 function XIcon({ size = 16 }: { size?: number }) {
@@ -10,12 +10,22 @@ function XIcon({ size = 16 }: { size?: number }) {
   );
 }
 
+function PinterestIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+    </svg>
+  );
+}
+
 const socials = [
   { label: 'YouTube', href: 'https://www.youtube.com/@dataweavex', Icon: Youtube },
   { label: 'X (Twitter)', href: 'https://x.com/dataweavex', Icon: XIcon },
+  { label: 'Pinterest', href: 'https://www.pinterest.com/dataweavex/', Icon: PinterestIcon },
+  { label: 'Facebook', href: 'https://www.facebook.com/dataweavex/', Icon: Facebook },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/dataweavex/', Icon: Linkedin },
 ];
 
 export default function Footer() {
-  return <footer className="footer"><div className="footer-top"><div><Mark /><p>AI data fabric<br />& transformation platform</p><div className="footer-socials">{socials.map(({ label, href, Icon }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}><Icon size={16} /></a>)}</div></div><div className="footer-links"><div><span className="eyebrow">Platform</span><a href="#features">Features</a><a href="#features">Capabilities</a><a href="#pricing">Pricing</a></div><div><span className="eyebrow">Explore</span><a href="#faq">FAQ</a><a href="#about">About</a><a href="#contact">Contact</a></div><div><span className="eyebrow">Elsewhere</span><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link></div></div><div className="footer-maps"><div className="footer-map"><span className="eyebrow">HQ — SRI LANKA</span><iframe title="DataWeaveX Sri Lanka HQ" src="https://www.google.com/maps?q=No%2002%20Union%20Place%2C%20Colombo%2000200%2C%20Sri%20Lanka&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><small>No. 02 Union Place, Colombo 00200</small></div><div className="footer-map"><span className="eyebrow">SUB BRANCH — USA</span><iframe title="DataWeaveX USA Sub Branch" src="https://www.google.com/maps?q=24%20Waverly%20Pl%2C%20New%20York%2C%20NY%2010003%2C%20USA&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><small>24 Waverly Pl, New York, NY 10003, USA</small></div></div></div><div className="footer-bottom"><span>© 2026 DataWeaveX. All rights reserved.</span><span>WEAVING THE ENTERPRISE DATA FABRIC FOR THE AI ERA.</span></div></footer>;
+  return <footer className="footer"><div className="footer-top"><div><Mark /><p>AI data fabric<br />& transformation platform</p><div className="footer-socials">{socials.map(({ label, href, Icon }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}><Icon size={16} /></a>)}</div></div><div className="footer-links"><div><span className="eyebrow">Platform</span><a href="#features">Features</a><a href="#features">Capabilities</a><a href="#pricing">Pricing</a></div><div><span className="eyebrow">Explore</span><a href="#faq">FAQ</a><a href="#about">About</a><a href="#contact">Contact</a></div><div><span className="eyebrow">Elsewhere</span><Link to="/privacy">Privacy</Link><Link to="/terms">Terms</Link></div></div><div className="footer-maps"><div className="footer-map"><span className="eyebrow">HQ - SRI LANKA</span><iframe title="DataWeaveX Sri Lanka HQ" src="https://www.google.com/maps?q=No%2002%20Union%20Place%2C%20Colombo%2000200%2C%20Sri%20Lanka&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><small>No. 02 Union Place, Colombo 00200</small></div><div className="footer-map"><span className="eyebrow">SUB BRANCH - USA</span><iframe title="DataWeaveX USA Sub Branch" src="https://www.google.com/maps?q=24%20Waverly%20Pl%2C%20New%20York%2C%20NY%2010003%2C%20USA&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><small>24 Waverly Pl, New York, NY 10003, USA</small></div></div></div><div className="footer-bottom"><span>© 2026 DataWeaveX. All rights reserved.</span><span>WEAVING THE ENTERPRISE DATA FABRIC FOR THE AI ERA.</span></div></footer>;
 }

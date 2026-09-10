@@ -5,7 +5,6 @@ import Mark from './Mark';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState('');
   const location = useLocation();
   const items = [['Feature', '#features'], ['How it works', '#about'], ['Pricing', '#pricing'], ['FAQ', '#faq'], ['Contact', '#contact']];
@@ -17,7 +16,6 @@ export default function Navbar() {
     }
     const ids = items.map(([, href]) => href.slice(1));
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
       const offset = 140;
       let current = '';
       for (const id of ids) {
@@ -37,30 +35,32 @@ export default function Navbar() {
   const getHref = (href: string) => (location.pathname === '/' ? href : `/${href}`);
 
   return (
-    <header className={`nav-wrap ${scrolled ? 'nav-scrolled' : ''}`}>
-      <nav className="nav-shell">
+    <header className="product-nav">
+      <div className="product-nav-left">
         <Mark compact />
-        <div className={`nav-links ${open ? 'nav-open' : ''}`}>
-          {items.map(([label, href]) => (
-            <a
-              key={label}
-              href={getHref(href)}
-              className={active === href.slice(1) && location.pathname === '/' ? 'active' : ''}
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </a>
-          ))}
-          <Link
-            to="/product"
-            className="nav-mobile-cta"
+      </div>
+      <nav className={`product-nav-links ${open ? 'nav-open' : ''}`}>
+        {items.map(([label, href]) => (
+          <a
+            key={label}
+            href={getHref(href)}
+            className={active === href.slice(1) && location.pathname === '/' ? 'active' : ''}
             onClick={() => setOpen(false)}
           >
-            WeaveCore OS <ArrowUpRight size={14} />
-          </Link>
-        </div>
-        <Link to="/product" className="nav-product">
-          WeaveCore OS <ArrowUpRight size={15} />
+            {label}
+          </a>
+        ))}
+      </nav>
+      <div className="product-nav-actions">
+        <Link
+          to="/product"
+          className="button button-quiet nav-mobile-cta"
+          onClick={() => setOpen(false)}
+        >
+          WeaveCore OS <ArrowUpRight size={14} />
+        </Link>
+        <Link to="/product" className="button button-primary nav-desktop-cta">
+          WeaveCore OS <ArrowUpRight size={14} />
         </Link>
         <button
           className="menu-button"
@@ -69,7 +69,7 @@ export default function Navbar() {
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
-      </nav>
+      </div>
     </header>
   );
 }

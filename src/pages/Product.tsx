@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -53,10 +53,30 @@ const pipelinesData: PipelineItem[] = [
 
 export default function Product() {
   const [filter, setFilter] = useState<PipelineStatus>('All');
+  const [active, setActive] = useState('overview');
 
   const filteredPipelines = pipelinesData.filter(
     (item) => filter === 'All' || item.status === filter
   );
+
+  useEffect(() => {
+    const ids = ['overview', 'pillars', 'capabilities', 'acceleration', 'operations', 'compare'];
+    const onScroll = () => {
+      const offset = 120;
+      let current = 'overview';
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= offset) current = id;
+      }
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 40) {
+        current = ids[ids.length - 1];
+      }
+      setActive(current);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <div className="product-page">
@@ -70,12 +90,12 @@ export default function Product() {
         </div>
 
         <nav className="product-nav-links">
-          <a href="#overview">Overview</a>
-          <a href="#pillars">Operating Pillars</a>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#acceleration">Accelerated Engine</a>
-          <a href="#operations">Operations Center</a>
-          <a href="#compare">Comparison</a>
+          <a href="#overview" className={active === 'overview' ? 'active' : ''}>Overview</a>
+          <a href="#pillars" className={active === 'pillars' ? 'active' : ''}>Operating Pillars</a>
+          <a href="#capabilities" className={active === 'capabilities' ? 'active' : ''}>Capabilities</a>
+          <a href="#acceleration" className={active === 'acceleration' ? 'active' : ''}>Accelerated Engine</a>
+          <a href="#operations" className={active === 'operations' ? 'active' : ''}>Operations Center</a>
+          <a href="#compare" className={active === 'compare' ? 'active' : ''}>Comparison</a>
         </nav>
 
         <div className="product-nav-actions">

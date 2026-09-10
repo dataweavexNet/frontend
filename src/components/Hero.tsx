@@ -13,7 +13,7 @@ export default function Hero() {
         <Reveal><span className="eyebrow cyan-text">ONE INTELLIGENT FABRIC FOR YOUR ENTIRE DATA LANDSCAPE</span></Reveal>
         <Reveal delay={0.08}><h1>Weave your data into<br /><em>something smarter.</em></h1></Reveal>
         <Reveal delay={0.16}><p className="hero-lead">One intelligent fabric for your entire data landscape.</p></Reveal>
-        <Reveal delay={0.16}><p>Data lives everywhere — across databases, cloud platforms, applications, APIs, warehouses, and data lakes. DataWeaveX brings it together, transforms it, enriches it, and makes it ready for the analytics and AI that move your business forward.</p></Reveal>
+        <Reveal delay={0.16}><p>Data lives everywhere across databases, cloud platforms, applications, APIs, warehouses, and data lakes. DataWeaveX brings it together, transforms it, enriches it, and makes it ready for the analytics and AI that move your business forward.</p></Reveal>
         <Reveal delay={0.22}><span className="hero-tagline"><b>Connect.</b><b>Transform.</b><b>Enrich.</b><b>Accelerate.</b></span></Reveal>
         <Reveal delay={0.22}>
           <div className="hero-actions">

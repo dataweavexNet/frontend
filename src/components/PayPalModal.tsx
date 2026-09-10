@@ -20,7 +20,7 @@ export default function PayPalModal({ plan, onClose }: { plan: Plan; onClose: ()
           <div className="paypal-success">
             <Check size={24} />
             <strong>Payment successful</strong>
-            <p>Thanks — your {plan.name} order is confirmed. We&apos;ll be in touch shortly.</p>
+            <p>Thanks. Your {plan.name} order is confirmed. We&apos;ll be in touch shortly.</p>
             <button className="button button-primary" type="button" onClick={onClose}>Done</button>
           </div>
         ) : (
