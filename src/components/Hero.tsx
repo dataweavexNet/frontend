@@ -15,7 +15,16 @@ export default function Hero() {
         <Reveal delay={0.16}><p className="hero-lead">One intelligent fabric for your entire data landscape.</p></Reveal>
         <Reveal delay={0.16}><p>Data lives everywhere — across databases, cloud platforms, applications, APIs, warehouses, and data lakes. DataWeaveX brings it together, transforms it, enriches it, and makes it ready for the analytics and AI that move your business forward.</p></Reveal>
         <Reveal delay={0.22}><span className="hero-tagline"><b>Connect.</b><b>Transform.</b><b>Enrich.</b><b>Accelerate.</b></span></Reveal>
-        <Reveal delay={0.22}><div className="hero-actions"><a className="button button-primary" href="#features">Explore the Platform <ArrowRight size={16} /></a><Link className="button button-quiet" to="/product"><Play size={15} /> See How It Works</Link></div></Reveal>
+        <Reveal delay={0.22}>
+          <div className="hero-actions">
+            <Link className="button button-primary" to="/product">
+              Explore WeaveCore OS <ArrowRight size={16} />
+            </Link>
+            <a className="button button-quiet" href="#features">
+              <Play size={15} /> See How It Works
+            </a>
+          </div>
+        </Reveal>
         <Reveal delay={0.28}><div className="hero-stats"><span>10+ Data Sources</span><i /><span>Real-Time Pipelines</span><i /><span>AI-Ready Data</span></div></Reveal>
       </div>
       <div className="hero-floats">
